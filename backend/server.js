@@ -1,33 +1,47 @@
-import express  from "express"
-import cors from 'cors'
-import { connectDB } from "./config/db.js"
-import userRouter from "./routes/userRoute.js"
-import foodRouter from "./routes/foodRoute.js"
-import 'dotenv/config'
-import cartRouter from "./routes/cartRoute.js"
-import orderRouter from "./routes/orderRoute.js"
+import express from "express";
+import cors from "cors";
+import "dotenv/config";
 
-// app config
-const app = express()
-const port = process.env.PORT || 4000;
+import { connectDB } from "./config/db.js";
 
+import userRouter from "./routes/userRoute.js";
+import foodRouter from "./routes/foodRoute.js";
+import cartRouter from "./routes/cartRoute.js";
+import orderRouter from "./routes/orderRoute.js";
 
-// middlewares
-app.use(express.json())
-app.use(cors())
+const app = express();
 
-// db connection
-connectDB()
+// Middleware
+app.use(express.json());
 
-// api endpoints
-app.use("/api/user", userRouter)
-app.use("/api/food", foodRouter)
-app.use("/images",express.static('uploads'))
-app.use("/api/cart", cartRouter)
-app.use("/api/order",orderRouter)
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
+// Database
+connectDB();
+
+// API routes
+app.use("/api/user", userRouter);
+app.use("/api/food", foodRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
+
+// Images
+app.use("/images", express.static("uploads"));
+
+// Health check
 app.get("/", (req, res) => {
-    res.send("API Working")
+  res.json({
+    success: true,
+    message: "Pizza King API Working",
   });
+});
 
-app.listen(port, () => console.log(`Server started on http://localhost:${port}`))
+// IMPORTANT:
+// Do NOT use app.listen() when deploying this Express app to Vercel.
+
+export default app;
