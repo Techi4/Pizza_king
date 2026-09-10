@@ -2,7 +2,7 @@
 
 Pizza King is a modern food delivery and multi-vendor platform built using the MERN stack. The project provides a complete foundation for customers, restaurants/vendors, administrators, and delivery operations.
 
-The platform is designed to support online food ordering, vendor management, product/menu management, payments, location-based delivery, and order management.
+The platform is designed to support online food ordering, vendor management, product/menu management, payments and order management.
 
 ---
 
@@ -13,7 +13,6 @@ Pizza King is designed as a scalable food-delivery platform where:
 - Customers can browse food items and place orders.
 - Vendors can manage their restaurants, menus, products, and orders.
 - Administrators can manage users, vendors, products, and platform operations.
-- Customers can select delivery locations using map-based services.
 - Online payments can be integrated using Stripe.
 - MongoDB Atlas is used for persistent data storage.
 - The frontend and backend are separated for easier development and deployment.
@@ -46,7 +45,6 @@ Pizza King is designed as a scalable food-delivery platform where:
 
 ### Integrations
 
-- Google Maps API
 - Stripe Payment Gateway
 
 ### Deployment
