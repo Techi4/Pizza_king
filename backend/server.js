@@ -40,6 +40,13 @@ app.get("/", (req, res) => {
     message: "Pizza King API Working",
   });
 });
+if (process.env.NODE_ENV !== "production") {
+    app.listen(port, () => {
+        console.log(`Server started on http://localhost:${port}`);
+    });
+}
+
+export default app;
 
 // IMPORTANT:
 // Do NOT use app.listen() when deploying this Express app to Vercel.
